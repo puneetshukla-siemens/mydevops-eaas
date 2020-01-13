@@ -16,11 +16,10 @@
               {
                 "ami": "",
                 "instance_type": "",
-                "tags": [
-                  {
+                "tags":  [
                     "Name": ""
-                  }
-                ]
+                    ]                
+                
               }
             ]
           }
