@@ -15,11 +15,7 @@
             "example": [
               {
                 "ami": "",
-                "instance_type": "",
-                "tags":  [
-                    "Name": ""
-                    ]                
-                
+                "instance_type": "",                     
               }
             ]
           }
