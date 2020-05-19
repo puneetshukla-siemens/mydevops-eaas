@@ -3,8 +3,8 @@ metadata:
 projects:
   - name: SourceCodeAnalytics-UI
     source:
-      location: 'git@code.siemens.com:teamrse/ai4se/sourcecodeanalytics-ui.git'
-      type: git
+      location: 'https://code.siemens.com/test-fork/sourcecodeanalytics-ui.git'
+      type: git   
 components:      
   - id: eclipse/che-machine-exec-plugin/latest
     type: chePlugin
