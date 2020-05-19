@@ -6,16 +6,6 @@ projects:
       location: 'git@code.siemens.com:test-fork/sourcecodeanalytics-ui.git'
       type: git   
 components:      
-  - id: eclipse/che-machine-exec-plugin/latest
-    type: chePlugin
-  - id: ms-python/python/latest
-    memoryLimit: 512Mi
-    type: chePlugin
-  - mountSources: true
-    memoryLimit: 512Mi
-    type: dockerimage
-    alias: python
-    image: 'docker.artifactory.int.idevops.de/che/python-run:latest'
   - id: ms-kubernetes-tools/vscode-kubernetes-tools/latest
     type: chePlugin
   - mountSources: true
