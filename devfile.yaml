@@ -1,0 +1,58 @@
+metadata:
+  name: Scource_Code_Recommendation
+projects:
+  - name: SourceCodeAnalytics-UI
+    source:
+      location: 'git@code.siemens.com:teamrse/ai4se/sourcecodeanalytics-ui.git'
+      type: git
+components:      
+  - id: eclipse/che-machine-exec-plugin/latest
+    type: chePlugin
+  - id: ms-python/python/latest
+    memoryLimit: 512Mi
+    type: chePlugin
+  - mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    alias: python
+    image: 'docker.artifactory.int.idevops.de/che/python-run:latest'
+  - id: ms-kubernetes-tools/vscode-kubernetes-tools/latest
+    type: chePlugin
+  - mountSources: true
+    referenceContent: |
+      kind: List
+      items:
+        - apiVersion: extensions/v1beta1
+          kind: Deployment
+          metadata:
+            name: docker-dind
+            namespace: che
+          spec:
+            replicas: 1
+            template:
+              metadata:
+                labels:
+                  app: docker-dind
+              spec:
+                containers:
+                  - name: docker
+                    image: docker:dind
+                    securityContext:
+                      runAsUser: 0
+                      privileged: true
+                    env:
+                      - name: DOCKER_TLS_CERTDIR
+                        value: ''
+
+    type: kubernetes
+    alias: docker
+apiVersion: 1.0.0    
+commands:
+  - name: start_ui
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/SourceCodeAnalytics-UI'
+        type: exec
+        command: >-
+          docker build -t scrui . && docker run --rm -p 3000:3000 scrui
+          && exit 0
+        component: docker
