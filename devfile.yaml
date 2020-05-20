@@ -1,23 +1,27 @@
 metadata:
   name: Scource_Code_Recommendation
 projects:
+  - name: SourceCodeAnalytics
+    source:
+      location: 'git@code.siemens.com:test-fork/SourceCodeAnalytics.git'
+      type: git
+      branch: untrained    
   - name: SourceCodeAnalytics-UI
     source:
       location: 'git@code.siemens.com:test-fork/sourcecodeanalytics-ui.git'
-      type: git      
-  - name: SourceCodeAnalytics
-    source:
-      location: 'git@code.siemens.com:teamrse/ai4se/SourceCodeAnalytics.git'
-      type: git
-      branch: untrained        
+      type: git         
 components:      
   - id: eclipse/che-machine-exec-plugin/latest
     type: chePlugin
   - id: ms-python/python/latest
-    memoryLimit: 512Mi
+    memoryLimit: 1024Mi
     type: chePlugin
+  - alias: theia-editor
+    type: cheEditor
+    id: eclipse/che-theia/next    
+    memoryLimit: 1024Mi
   - mountSources: true
-    memoryLimit: 512Mi
+    memoryLimit: 1024Mi
     type: dockerimage
     alias: python
     image: 'docker.artifactory.int.idevops.de/che/python-run:latest'
