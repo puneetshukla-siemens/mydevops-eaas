@@ -1,11 +1,6 @@
 metadata:
   name: Scource_Code_Recommendation
 projects:
-  - name: SourceCodeAnalytics
-    source:
-      location: 'git@code.siemens.com:test-fork/SourceCodeAnalytics.git'
-      type: git
-      branch: untrained    
   - name: SourceCodeAnalytics-UI
     source:
       location: 'git@code.siemens.com:test-fork/sourcecodeanalytics-ui.git'
@@ -14,12 +9,12 @@ components:
   - id: eclipse/che-machine-exec-plugin/latest
     type: chePlugin
   - id: ms-python/python/latest
-    memoryLimit: 1024Mi
+    memoryLimit: 512Mi
     type: chePlugin
   - alias: theia-editor
     type: cheEditor
     id: eclipse/che-theia/next    
-    memoryLimit: 1024Mi
+    memoryLimit: 512Mi
   - mountSources: true
     memoryLimit: 1024Mi
     type: dockerimage
@@ -64,10 +59,4 @@ commands:
         command: >-
           docker build -t scrui . && docker run --rm -p 3000:3000 scrui
           && exit 0
-        component: docker
-  - name: start_backend
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/SourceCodeAnalytics'
-        type: exec
-        command: docker build -t scrbackend . && docker run --rm scrbackend && exit 0
-        component: docker        
+        component: docker    
