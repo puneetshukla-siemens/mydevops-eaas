@@ -5,11 +5,6 @@ projects:
     source:
       location: 'git@code.siemens.com:chetest/sourcecodeanalytics-ui.git'
       type: git   
-  - name: SourceCodeReuseRecommendation
-    source:
-      location: 'git@code.siemens.com:teamrse/ai4se/SourceCodeAnalytics.git'
-      type: git
-      branch: advise
 components:      
   - id: eclipse/che-machine-exec-plugin/latest
     type: chePlugin
