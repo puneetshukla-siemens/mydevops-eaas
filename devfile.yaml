@@ -5,7 +5,7 @@ projects:
     source:
       location: 'git@code.siemens.com:chetest/sourcecodeanalytics-ui.git'
       type: git 
-  - name: SourceCodeAnalytics-UI
+  - name: SourceCodeReuseRecommendation
     source:
       location: 'git@code.siemens.com:teamrse/ai4se/SourceCodeAnalytics.git'
       type: git      
