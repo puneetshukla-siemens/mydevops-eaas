@@ -1,9 +1,9 @@
 metadata:
   name: Scource_Code_Recommendation
 projects:
-  - name: SourceCodeAnalytics-UI
+  - name: exper-recommender
     source:
-      location: 'git@code.siemens.com:chetest/sourcecodeanalytics-ui.git'
+      location: 'git@code.siemens.com:teamrse/ai4se/git-expert-recommender.git'
       type: git   
 components:      
   - id: eclipse/che-machine-exec-plugin/latest
@@ -57,6 +57,6 @@ commands:
       - workdir: '${CHE_PROJECTS_ROOT}/SourceCodeAnalytics-UI'
         type: exec
         command: >-
-          docker build -t scrui . && docker run --rm -p 3000:3000 scrui
+          docker build -t expert-reccommender . && docker run --rm -p 5077:5077 expert-reccommender
           && exit 0
         component: docker    
