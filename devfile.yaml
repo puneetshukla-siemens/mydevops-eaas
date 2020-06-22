@@ -1,7 +1,7 @@
 metadata:
-  name: Scource_Code_Recommendation
+  name: test
 projects:
-  - name: exper-recommender
+  - name: test-project
     source:
       location: 'git@code.siemens.com:teamrse/ai4se/git-expert-recommender.git'
       type: git   
@@ -54,9 +54,9 @@ apiVersion: 1.0.0
 commands:
   - name: start_ui
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/SourceCodeAnalytics-UI'
+      - workdir: '${CHE_PROJECTS_ROOT}/test-project'
         type: exec
         command: >-
-          docker build -t expert-reccommender . && docker run --rm -p 5077:5077 expert-reccommender
+          docker build -t test . && docker run --rm -p 5077:5077 test
           && exit 0
         component: docker    
