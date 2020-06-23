@@ -49,6 +49,6 @@ commands:
       - workdir: '.'
         type: exec
         command: >-
-          apk update && apk add docker-compose && cd ${CHE_PROJECTS_ROOT}/expert-recommender && docker create volume egr_data && docker-compose up && exit 0
+          apk update && apk add docker-compose && cd ${CHE_PROJECTS_ROOT}/expert-recommender && sh run.sh && exit 0
         component: docker  
      
