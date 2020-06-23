@@ -4,22 +4,14 @@ projects:
   - name: expert-recommender
     source:
       location: 'git@code.siemens.com:teamrse/ai4se/git-expert-recommender.git'
-      type: git   
+      type: git  
 components:      
   - id: eclipse/che-machine-exec-plugin/latest
-    type: chePlugin
-  - id: ms-python/python/latest
-    memoryLimit: 512Mi
     type: chePlugin
   - alias: theia-editor
     type: cheEditor
     id: eclipse/che-theia/next    
     memoryLimit: 512Mi
-  - mountSources: true
-    memoryLimit: 1024Mi
-    type: dockerimage
-    alias: python
-    image: 'docker.artifactory.int.idevops.de/che/python-run:latest'
   - id: ms-kubernetes-tools/vscode-kubernetes-tools/latest
     type: chePlugin
   - mountSources: true
@@ -47,14 +39,16 @@ components:
                     env:
                       - name: DOCKER_TLS_CERTDIR
                         value: ''
+
     type: kubernetes
     alias: docker
 apiVersion: 1.0.0    
 commands:
   - name: start_ui
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/expert-recommender'
+      - workdir: '.'
         type: exec
         command: >-
           apk update && apk add docker-compose && cd ${CHE_PROJECTS_ROOT}/expert-recommender && docker create volume egr_data && docker-compose up && exit 0
-        component: docker 
+        component: docker  
+     
